@@ -1,0 +1,24 @@
+<h1>TodoList</h1>
+
+<div class="list-group">
+    <% @todos.each do |todo| %>
+      <div class="list-group-item row">
+          <div class="col-md-4">
+            <%= todo.name %>
+          </div>
+          <div class="col-md-4">
+            <% if todo.deadline %>
+              <%= l todo.deadline, format: :date %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+              <%= link_to "Update", edit_todo_path(todo) %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "Delete", todo_path(todo), method: :delete %>
+          </div>
+      </div>
+    <% end %>
+</div>
+
+<%= link_to "Add Todo", new_todo_path %>
